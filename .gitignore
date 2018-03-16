@@ -1,3 +1,4 @@
 client/node_modules
 server/vendor
 yellowc6_cstag.sql
+.vscode
