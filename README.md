@@ -6,8 +6,7 @@
 
 * **Install PHP, MySQL, Composer**
 * **Install Dependencies**
-  `cd server`
-  `composer install`
+  `cd server && composer install`
 * **Database Migration**
   `php artisan migrate`
 * **Laravel Key Gernation**
@@ -21,8 +20,7 @@
 
 * **Install Node, Npm**
 * **Install Dependencies**
-  `cd client`
-  `npm install`
+  `cd client && npm install`
 * **Serve App**
   `npm start`
 
