@@ -12,7 +12,7 @@
 
         <div class="input-container subject-input-container">
             <label for="subject">{{settings.get('hc.new-ticket.subject_label')}}</label>
-            <suggested-articles-drawer id="subject" (inputValue)="ticketModel.subject = $event" [category]="ticketModel.category" trans-placeholder></suggested-articles-drawer>
+            <suggested-articles-drawer id="subject" (inputValue)="ticketModel.subject = $event" [category]="ticketModel.subject" trans-placeholder></suggested-articles-drawer>
             <div class="errors subject-error" *ngIf="errors['subject']">{{errors['subject']}}</div>
         </div>
 

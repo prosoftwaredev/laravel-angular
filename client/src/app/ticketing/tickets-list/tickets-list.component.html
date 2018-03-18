@@ -25,7 +25,7 @@
             <div class="flex-table-item center ticket-number" trans>Number</div>
             <div class="flex-table-item center last-updated" trans>Last Updated</div>
             <div class="flex-table-item center last-worker" trans>Assigned</div>
-            <div class="flex-table-item center assigned-group" trans>Priority</div>
+            <div class="flex-table-item center priority" trans>Priority</div>
             <div class="flex-table-item center assigned-group" trans>Group</div>
         </div>
 
@@ -62,8 +62,8 @@
             <div class="last-worker flex-table-item center">
                 {{ticket.assigned_user && ticket.assigned_user.first_name && ticket.assigned_user.last_name && ticket.assigned_user.first_name + ' ' + ticket.assigned_user.last_name}}
             </div>
-            <div class="assigned-group flex-table-item center">
-                {{ ticket.priority && ticket.priority.name }}
+            <div class="priority flex-table-item center">
+                {{ (ticket.priority && ticket.priority.name ) || 'Low' }}
             </div>
             <div class="assigned-group flex-table-item center">
                 <span *ngFor="let item of ticket.assigned_group, let i=index" [ngStyle]="{color: item.color ? item.color : 'rgba(0, 0, 0, 0.87)' }">

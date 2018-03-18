@@ -1,6 +1,7 @@
 {
   "/secure": {
-    "target": "http://localhost/helpdesk/server",
-    "secure": false
+    "target": "http://local.yellowcard.com",
+    "secure": false,
+    "changeOrigin": true
   }
 }

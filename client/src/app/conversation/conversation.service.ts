@@ -12,7 +12,8 @@ import {Priority} from "../shared/models/Priority";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class Conversation {
+export class 
+Conversation {
 
     /**
      * Whether conversation is loading currently.
@@ -83,7 +84,11 @@ export class Conversation {
      * Get conversation status.
      */
     public getPriority() {
-        return this.priority;
+        if (this.priority)
+            return this.priority;
+        else return {
+            name: 'Low'
+        }
     }
 
     /**

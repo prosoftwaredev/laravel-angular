@@ -41,7 +41,7 @@
 <div class="right ticket-info">
     <div class="ticket-number">AP{{conversation.get().id}}</div>
     <div class="ticket-status" [ngClass]="conversation.getStatus().name">{{conversation.getStatus().name}}</div>
-    <div class="ticket-priority" [ngClass]="conversation.getPriority().name" *ngIf="conversation.getPriority()">
+    <div class="ticket-priority" [ngClass]="conversation.getPriority().name">
         {{conversation.getPriority().name}}
     </div>
 </div>
