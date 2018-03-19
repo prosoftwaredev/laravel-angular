@@ -47,5 +47,23 @@
         <p trans>Send a notification to user via email informing them that their ticket has been received.</p>
     </div>
 
+    <div class="setting-checkbox" *ngIf="state.client['tickets.send_ticket_created_notification']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_in_office_hours" id="tickets.send_ticket_in_office_hours" [(ngModel)]="state.client['tickets.send_ticket_in_office_hours']">
+        <label for="tickets.send_ticket_in_office_hours" trans>During Office Hours</label>
+        <p trans>Send a notification to user in office hour.</p>
+    </div>
+
+    <div class="setting-checkbox" *ngIf="state.client['tickets.send_ticket_created_notification']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_after_office_hours" id="tickets.send_ticket_after_office_hours" [(ngModel)]="state.client['tickets.send_ticket_after_office_hours']">
+        <label for="tickets.send_ticket_after_office_hours" trans>After Office Hours</label>
+        <p trans>Send a notification to user after office hours.</p>
+    </div>
+
+    <div class="setting-checkbox" *ngIf="state.client['tickets.send_ticket_created_notification']">
+        <input type="checkbox" class="pretty-checkbox" name="tickets.send_ticket_in_weekends" id="tickets.send_ticket_in_weekends" [(ngModel)]="state.client['tickets.send_ticket_in_weekends']">
+        <label for="tickets.send_ticket_in_weekends" trans>Weekend and Public Days</label>
+        <p trans>Send a notification in weekend and public days.</p>
+    </div>
+
     <button class="button primary update-button" type="submit" trans>Update</button>
 </form>
