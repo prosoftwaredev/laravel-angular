@@ -219,16 +219,9 @@ class User extends Authenticatable
      */
     public function getAvatarAttribute($value)
     {
-        //absolute link
-        if ($value && str_contains($value, '//')) return $value;
+        if ($value) return $value;
 
-        //relative link
-        if ($value) return asset("storage/$value");
-
-        //gravatar
-        $hash = md5(trim(strtolower($this->email)));
-
-        return "https://www.gravatar.com/avatar/$hash?s=65";
+        return "/assets/images/apr.png";
     }
 
     /**

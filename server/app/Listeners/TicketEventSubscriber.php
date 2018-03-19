@@ -9,6 +9,7 @@ use App\Services\Triggers\TriggersCycle;
 use Illuminate\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Events\Dispatcher;
+use Carbon\Carbon;
 
 class TicketEventSubscriber implements ShouldQueue
 {
@@ -50,9 +51,32 @@ class TicketEventSubscriber implements ShouldQueue
     public function onTicketCreated(TicketCreated $event)
     {
         $this->triggersCycle->runAgainstTicket($event->ticket);
-
+        $dt = Carbon::now();
         if ($this->settings->get('tickets.send_ticket_created_notification')) {
-            $this->mailer->queue(new TicketCreatedNotification($event->ticket));
+            if ($this->settings->get('tickets.send_ticket_in_weekends')) {
+                if ($dt->isWeekday()) {
+                    $dt = Carbon::parse('this saturday')->toDateString();
+                }
+            }
+            else if ($this->settings->get('tickets.send_ticket_in_office_hours')) {
+                if ($dt->isWeekend()) {
+                    $dt = Carbon::parse('next monday')->addHours(10)->toDateString();
+                }
+                else if ($dt->hour > 18) {
+                    if ($dt->dayOfWeek == 4) {
+                        $dt = Carbon::parse('next monday')->addHours(10)->toDateString();
+                    }
+                    else {
+                        $dt = Carbon::parse('tomorrow')->addHours(10)->toDateString();
+                    }
+                }
+            }
+            else if ($this->settings->get('tickets.send_ticket_after_office_hours')) {
+                if ($dt->hour > 18) {
+                    $dt = Carbon::parse('tomorrow')->addHours(10)->toDateString();
+                }
+            }
+            $this->mailer->queue(new TicketCreatedNotification($event->ticket))->laterOn($dt);
         }
     }
 

@@ -10,7 +10,7 @@
 
 
         {{--angular styles begin--}}
-		<link href="styles.5a87807921b4f3e65da0.bundle.css" rel="stylesheet">
+		<link href="styles.631dd27f687f9c5ab379.bundle.css" rel="stylesheet" />
 		{{--angular styles end--}}
 
         @if ($settings->has('custom_code.css'))
@@ -26,11 +26,11 @@
         </script>
 
         {{--angular scripts begin--}}
-		<script type="text/javascript" src="inline.e5dcf32046d0f4442759.bundle.js"></script>
-		<script type="text/javascript" src="polyfills.a26fefeb698715c276bb.bundle.js"></script>
-		<script type="text/javascript" src="scripts.0b365efe02c77a3b73b5.bundle.js"></script>
-		<script type="text/javascript" src="vendor.9b5bf219d693f3d360e0.bundle.js"></script>
-		<script type="text/javascript" src="main.06518ee5cb16851a4380.bundle.js"></script>
+		<script type="text/javascript" src="inline.a8261e3a5a462a2feb91.bundle.js"></script>
+        <script type="text/javascript" src="polyfills.8736bd7b7e2705fb4847.bundle.js"></script>
+        <script type="text/javascript" src="scripts.af6f73aff26a9815c786.bundle.js"></script>
+        <script type="text/javascript" src="vendor.2afcb15b0a74ae78e6de.bundle.js"></script>
+        <script type="text/javascript" src="main.345d947aed752e03ebf7.bundle.js"></script>
 		{{--angular scripts end--}}
 
         @if ($settings->has('custom_code.js'))

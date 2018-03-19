@@ -14,7 +14,7 @@ class CORS {
      */
     public function handle($request, Closure $next) {
         //return $next($request);
-        header("Access-Control-Allow-Origin: http://local.yellewcard.com");
+        header("Access-Control-Allow-Origin: http://local.yellowcard.com");
         // ALLOW OPTIONS METHOD
         $headers = [
             'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',

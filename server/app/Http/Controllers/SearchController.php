@@ -157,7 +157,16 @@ class SearchController extends Controller
 
         $detailed = $this->request->get('detailed', false);
 
-        $ids = $this->ticket->search($query)->keys();
+        $ids = [];
+        if (strpos($query, 'AP') == 0) {
+            $ids = $this->ticket->where('id', 'Like', '%'.substr($query, 2).'%')->pluck('id')->toArray();
+        }
+        else {
+            $ids = array_merge(
+                $this->ticket->where('id', 'Like', '%'.$query.'%')->pluck('id')->toArray(),
+                $this->ticket->search($query)->keys()->toArray()
+            );
+        }
 
         $query = $this->ticket->compact()->whereIn('id', $ids);
 

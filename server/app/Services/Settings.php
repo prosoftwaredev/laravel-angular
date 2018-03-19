@@ -13,6 +13,7 @@ class Settings {
      * @var Collection
      */
     private $all;
+    
 
     /**
      * Create a new settings service instance.
@@ -31,7 +32,6 @@ class Settings {
     public function all($private = false)
     {
         $all = $this->all;
-
         //filter out private (server-only) settings
         if ( ! $private) {
             $all = $all->filter(function(Setting $setting) use($private) {
@@ -149,12 +149,13 @@ class Settings {
      */
     private function loadSettings()
     {
-        $this->all = Cache::remember('settings.public', 1440, function() {
-            try {
-                return Setting::all();
-            } catch (Exception $e) {
-                return collect();
-            }
-        });
+        // $this->all = Cache::remember('settings.public', 1440, function() {
+        //     try {
+        //         return Setting::all();
+        //     } catch (Exception $e) {
+        //         return collect();
+        //     }
+        // });
+        $this->all = Setting::all();
     }
 }
