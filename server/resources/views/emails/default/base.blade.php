@@ -12,6 +12,23 @@
                 direction: rtl;
                 unicode-bidi: embed;
             }
+
+            @font-face {
+                font-family: 'Century Gothic';
+                src: 
+                    url({{ public_path('assets/fonts/Century Gothic.ttf') }}), 
+                    url({{ public_path('assets/fonts/CenturyGothic.ttf') }}),  
+                    url({{ public_path('assets/fonts/GOTHIC.ttf')}}),
+                    url({{ public_path('assets/fonts/GOTHICB.ttf')}}),
+                    url({{ public_path('assets/fonts/GOTHICB0.ttf')}}),
+                    url({{ public_path('assets/fonts/GOTHICBI.ttf')}}),
+                    url({{ public_path('assets/fonts/GOTHICI.ttf')}});
+            }
+
+            body {
+                font-family: 'Century Gothic';
+                font-size: 12px;
+            }
         </style>
     </head>
 
