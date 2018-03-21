@@ -10,7 +10,7 @@
 
 
         {{--angular styles begin--}}
-		<link href="styles.631dd27f687f9c5ab379.bundle.css" rel="stylesheet" />
+		<link href="styles.ec5639b3df4224e48472.bundle.css" rel="stylesheet" />
 		{{--angular styles end--}}
 
         @if ($settings->has('custom_code.css'))
@@ -26,11 +26,11 @@
         </script>
 
         {{--angular scripts begin--}}
-		<script type="text/javascript" src="inline.a8261e3a5a462a2feb91.bundle.js"></script>
+		<script type="text/javascript" src="inline.927b2a20d2c22c193aa5.bundle.js"></script>
         <script type="text/javascript" src="polyfills.8736bd7b7e2705fb4847.bundle.js"></script>
-        <script type="text/javascript" src="scripts.af6f73aff26a9815c786.bundle.js"></script>
+        <script type="text/javascript" src="scripts.7952773edb56bea04d7e.bundle.js"></script>
         <script type="text/javascript" src="vendor.2afcb15b0a74ae78e6de.bundle.js"></script>
-        <script type="text/javascript" src="main.345d947aed752e03ebf7.bundle.js"></script>
+        <script type="text/javascript" src="main.f3692852c1e800846b00.bundle.js"></script>
 		{{--angular scripts end--}}
 
         @if ($settings->has('custom_code.js'))
