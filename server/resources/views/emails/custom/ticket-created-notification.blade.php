@@ -9,7 +9,7 @@
         <p>One of our support agents will get back to you shortly. Please do not submit multiple tickets for the same request, as this will not result in a faster response time.</p>
 
         <p>In the meantime, you can search our <a href="{{url('help-center')}}">Help Center</a></p>
-
+        AP{{$ticket->id}}
         <p>Kind Regards<br>{{$siteName}} Help Team</p>
     </div>
 @endsection
