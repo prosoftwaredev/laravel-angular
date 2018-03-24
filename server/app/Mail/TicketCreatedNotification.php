@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use App\Services\Mail\MailTemplates;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Carbon\Carbon;
 
 class TicketCreatedNotification extends Mailable implements ShouldQueue
 {
@@ -26,14 +27,21 @@ class TicketCreatedNotification extends Mailable implements ShouldQueue
     public $siteName;
 
     /**
+     * @var Carbon
+     */
+    public $delay;
+
+    /**
      * Create a new message instance.
      *
      * @param Ticket $ticket
      */
-    public function __construct(Ticket $ticket)
+    public function __construct(Ticket $ticket, Carbon $dt)
     {
         $this->ticket = $ticket;
+        $this->delay = $dt;
         $this->siteName = App::make(Settings::class)->get('branding.site_name');
+
     }
 
     /**
@@ -51,6 +59,7 @@ class TicketCreatedNotification extends Mailable implements ShouldQueue
         return $this->to($this->ticket->user->email)
             ->subject($template['subject'])
             ->view($template['html_view'])
-            ->text($template['plain_view']);
+            ->text($template['plain_view'])
+            ->later($this->delay->toDateString());
     }
 }
