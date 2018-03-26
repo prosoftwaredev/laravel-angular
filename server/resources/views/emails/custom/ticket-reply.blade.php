@@ -28,7 +28,9 @@
                 </td>
             </tr>
         </table>
+
         <div class="signature" style="margin-top: 25px">
+            <div style="height: 65px;"><img src="{{url('assets/images/apr.png')}}" style="float: left;"><p style="padding-top:2px;padding-left:5px;float:left;">Africa Prudential</p></div>
             <p class="company" style="font-family: 'Century Gothic','Lucida Sans Unicode','Lucida Sans',Verdana,Tahoma,sans-serif; font-size: 13px; line-height: 25px; margin-bottom: 0; margin-top: 0; padding: 0; color:#E33;">Africa Prudential</p>
             <p class="currentuser-name" style="font-family: 'Century Gothic','Lucida Sans Unicode','Lucida Sans',Verdana,Tahoma,sans-serif; font-size: 13px; line-height: 25px; margin-bottom: 0; margin-top: 0; padding: 0; color:#555;">{{$latestReply->user->display_name}}</p>
             <p style="font-family: 'Century Gothic','Lucida Sans Unicode','Lucida Sans',Verdana,Tahoma,sans-serif; font-size: 13px; line-height: 25px; margin-bottom: 20px; margin-top: 0; padding: 0; color:#555;">Customer Service Fulfillment Officer</p>

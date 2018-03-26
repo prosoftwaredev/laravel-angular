@@ -96,6 +96,7 @@
 <textarea class="source-textarea" #sourceArea rows="8" [style.min-height]="minHeight" style="display: none" [(ngModel)]="sourceAreaModel"></textarea>
 <textarea class="visual-textarea" #visualArea rows="8" [style.min-height]="minHeight"></textarea>
 <div class="signature" *ngIf="isReply">
+    <div style="height: 50px;"><img src="{{settings.get('base_url')+'/assets/images/apr.png'}}" style="float: left;"><p class="sig_logo_txt">Africa Prudential</p></div>
     <p class="company">Africa Prudential</p>
     <p class="currentuser-name">{{currentUser.get('first_name') + ' ' + currentUser.get('last_name')}}</p>
     <p>Customer Service Fulfillment Officer</p>

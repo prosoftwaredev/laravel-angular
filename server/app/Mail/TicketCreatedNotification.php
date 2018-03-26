@@ -34,6 +34,7 @@ class TicketCreatedNotification extends Mailable implements ShouldQueue
     {
         $this->ticket = $ticket;
         $this->siteName = App::make(Settings::class)->get('branding.site_name');
+
     }
 
     /**

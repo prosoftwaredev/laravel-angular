@@ -33,7 +33,14 @@ text-editor {
   .dropdown-menu {
     max-height: 350px;
   }
-
+  .sig_logo_txt {
+    float: left;
+    font-size: 23px;
+    padding-top: 7px;
+    padding-left: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
   .signature {
     padding: 25px;
     p {
@@ -41,8 +48,8 @@ text-editor {
       color: #333;
       &.company {
         color: #ee3333;
-        margin-top: 20px;
       }
+      
     }
     ul {
       padding: 0;

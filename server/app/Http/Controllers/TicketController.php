@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use App\Services\Ticketing\TicketRepository;
 use App\Events\TicketCreated;
+use Carbon\Carbon;
 
 class TicketController extends Controller
 {

@@ -19,6 +19,7 @@ class TicketEventSubscriber implements ShouldQueue
      * @var TriggersCycle
      */
     private $triggersCycle;
+    public $tries = 5;
 
     /**
      * @var Mailer
@@ -51,32 +52,35 @@ class TicketEventSubscriber implements ShouldQueue
     public function onTicketCreated(TicketCreated $event)
     {
         $this->triggersCycle->runAgainstTicket($event->ticket);
-        $dt = Carbon::now();
+        $now = Carbon::now();
+        $dt = Carbon::now()->addMinutes(30);
+
         if ($this->settings->get('tickets.send_ticket_created_notification')) {
-            if ($this->settings->get('tickets.send_ticket_in_weekends')) {
-                if ($dt->isWeekday()) {
-                    $dt = Carbon::parse('this saturday')->toDateString();
-                }
-            }
-            else if ($this->settings->get('tickets.send_ticket_in_office_hours')) {
-                if ($dt->isWeekend()) {
-                    $dt = Carbon::parse('next monday')->addHours(10)->toDateString();
-                }
-                else if ($dt->hour > 18) {
-                    if ($dt->dayOfWeek == 4) {
-                        $dt = Carbon::parse('next monday')->addHours(10)->toDateString();
-                    }
-                    else {
-                        $dt = Carbon::parse('tomorrow')->addHours(10)->toDateString();
-                    }
-                }
-            }
-            else if ($this->settings->get('tickets.send_ticket_after_office_hours')) {
-                if ($dt->hour > 18) {
-                    $dt = Carbon::parse('tomorrow')->addHours(10)->toDateString();
-                }
-            }
-            $this->mailer->queue(new TicketCreatedNotification($event->ticket))->laterOn($dt);
+            // if ($this->settings->get('tickets.send_ticket_in_weekends')) {
+            //     if ($dt->isWeekday()) {
+            //         $dt = Carbon::parse('this saturday');
+            //     }
+            // }
+            // else if ($this->settings->get('tickets.send_ticket_in_office_hours')) {
+            //     if ($dt->isWeekend()) {
+            //         $dt = Carbon::parse('next monday')->addHours(10);
+            //     }
+            //     else if ($dt->hour > 18) {
+            //         if ($dt->dayOfWeek == 4) {
+            //             $dt = Carbon::parse('next monday')->addHours(10);
+            //         }
+            //         else {
+            //             $dt = Carbon::parse('tomorrow')->addHours(10);
+            //         }    
+            //     }
+            // }
+            // else if ($this->settings->get('tickets.send_ticket_after_office_hours')) {
+            //     if ($dt->hour > 18) {
+            //         $dt = Carbon::parse('tomorrow')->addHours(10);
+            //     }
+            // }
+            $diff = $dt->diffInSeconds($now);
+            $this->mailer->later(100, new TicketCreatedNotification($event->ticket));
         }
     }
 
